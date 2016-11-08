@@ -26,25 +26,25 @@ class SeedFormatsTable extends Seeder
         DB::table('movies')->delete();
         //insert some dummy records
         DB::table('movies')->insert(array(
-            array('title'=>'The Breakfast Clup'),
-            array('format'=>'VHS'),
-            array('length'=>'93'),
-            array('release_year'=>'1985'),
-            array('rating'=>'3'),
+            'title'=>'The Breakfast Club',
+            'format'=>'VHS',
+            'length'=>'93',
+            'release_year'=>'1985',
+            'rating'=>'3',
         ));
         DB::table('movies')->insert(array(
-            array('title'=>'Bladerunner'),
-            array('format'=>'DVD'),
-            array('length'=>'117'),
-            array('release_year'=>'1982'),
-            array('rating'=>'5'),
+            'title'=>'Bladerunner',
+            'format'=>'DVD',
+            'length'=>'117',
+            'release_year'=>'1982',
+            'rating'=>'5',
         ));
         DB::table('movies')->insert(array(
-            array('title'=>"Ender's Game"),
-            array('format'=>'Streaming'),
-            array('length'=>'114'),
-            array('release_year'=>'2013'),
-            array('rating'=>'5'),
+            'title'=>"Ender's Game",
+            'format'=>'Streaming',
+            'length'=>'114',
+            'release_year'=>'2013',
+            'rating'=>'5',
         ));
     }
 
