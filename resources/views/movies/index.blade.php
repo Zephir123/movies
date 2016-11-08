@@ -19,7 +19,7 @@
 
 <nav class="navbar navbar-inverse">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('movies') }}">Movie List</a>
+        <a class="navbar-brand" href="{{ URL::to('movies') }}">Colin's Movie Manager</a>
     </div>
     <ul class="nav navbar-nav">
         <li><a href="{{ URL::to('movies') }}">View All Movies</a></li>
@@ -58,14 +58,14 @@
             <!-- we will also add show, edit, and delete buttons -->
             <td>
 
-                <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
+                <!-- delete the movie (uses the destroy method DESTROY /nerds/{id} -->
                 <!-- we will add this later since its a little more complicated than the other two buttons -->
 
-                <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-                <a class="btn btn-small btn-success" href="{{ URL::to('nerds/' . $value->id) }}">Show this Movie</a>
+                <!-- show the movie record (uses the show method found at GET /nerds/{id} -->
+                <!-- a class="btn btn-small btn-success" href="{{ URL::to('movies/' . $value->id) }}">Show this Movie</a> -->
 
                 <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                <a class="btn btn-small btn-info" href="{{ URL::to('nerds/' . $value->id . '/edit') }}">Edit this Movie</a>
+                <a class="btn btn-small btn-info" href="{{ URL::to('movies/' . $value->id . '/edit') }}">Edit this Movie</a>
 
             </td>
         </tr>
