@@ -58,10 +58,10 @@ class MovieController extends Controller
     {
         // validate
         $rules = array(
-            'title'         => 'required',
+            'title'         => 'required|max:50',
             'format'        => 'required',
-            'length'        => 'required|numeric',
-            'release_year'  => 'required|numeric',
+            'length'        => 'required|numeric|between:0,500',
+            'release_year'  => 'required|numeric|between:1800,2100',
         );
         $validator = Validator::make(Input::all(), $rules);
 
