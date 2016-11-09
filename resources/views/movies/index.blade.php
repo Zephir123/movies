@@ -1,32 +1,7 @@
-<!--
- * Created by PhpStorm.
- * User: cbennett
- * Date: 11/8/16
- * Time: 14:20
- *
- * Basic blade template to show list of all movies
- * Will need to refactor into layout later
- -->
+@extends('layouts.app')
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Look! I'm CRUDding</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container">
-
-<nav class="navbar navbar-inverse">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('movies') }}">Colin's Movie Manager</a>
-    </div>
-    <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('movies') }}">View All Movies</a></li>
-        <li><a href="{{ URL::to('movies/create') }}">Create a Movie</a>
-    </ul>
-</nav>
-
+@section('content')
+    <div class="container">
 <h1>All the Movies</h1>
 
 <!-- Show messages -->
@@ -72,7 +47,5 @@
     @endforeach
     </tbody>
 </table>
-
-</div>
-</body>
-</html>
+    </div>
+@endsection
