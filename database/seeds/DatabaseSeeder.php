@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
 
         // $this->call(UsersTableSeeder::class);
-        $this->call(SeedFormatsTable::class);
+        $this->call(SeedMoviesTable::class);
     }
 }
 
