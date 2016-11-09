@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use Input;
+use Redirect;
+use Request;
+use Session;
+use Validator;
 use View;
-use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
+
+    /**
+     * Constrctor requires user to be authenticated.
+     *
+     * Unathenticate users are redirected to /login.
+     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -34,7 +44,8 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        // load the create form (app/views/movies/create.blade.php)
+        return View::make('movies.create');
     }
 
     /**
@@ -45,7 +56,34 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate
+        $rules = array(
+            'title'         => 'required',
+            'format'        => 'required',
+            'length'        => 'required|numeric',
+            'release_year'  => 'required|numeric',
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('movies/create')
+                ->withErrors($validator)
+                ->withInput(Input::except('password'));
+        } else {
+            // store
+            $movie = new \App\Movie;
+            $movie->title        = Input::get('title');
+            $movie->format       = Input::get('format');
+            $movie->length       = Input::get('length');
+            $movie->release_year = Input::get('release_year');
+            $movie->rating       = Input::get('rating');
+            $movie->save();
+
+            // redirect
+            Session::flash('message', 'Successfully created movie!');
+            return Redirect::to('movies');
+        }
     }
 
     /**

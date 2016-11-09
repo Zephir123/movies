@@ -20,7 +20,7 @@ class CreateMoviesTable extends Migration
             $table->integer('length');
             $table->integer('release_year');
             $table->integer('rating')->nullable();
-
+            $table->timestamps();
             //$table->foreign('format')->references('format')->on('formats');
         });
     }

@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     }
 }
 
-class SeedFormatsTable extends Seeder
+class SeedMoviesTable extends Seeder
 {
 
     public function run()
