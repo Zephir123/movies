@@ -28,7 +28,18 @@
             <td>{{ $value->format }}</td>
             <td>{{ $value->length }}</td>
             <td>{{ $value->release_year }}</td>
-            <td>{{ $value->rating }}</td>
+            <td>
+                {{ Form::model($value, array('route' => array('movies.update', $value->id), 'method' => 'PUT')) }}
+                <span class="star-rating" style="pointer-events: none">
+                    {{ Form::radio('rating','1') }}<i></i>
+                    {{ Form::radio('rating','2') }}<i></i>
+                    {{ Form::radio('rating','3') }}<i></i>
+                    {{ Form::radio('rating','4') }}<i></i>
+                    {{ Form::radio('rating','5') }}<i></i>
+                </span>
+
+                {{ Form::close() }}
+            </td>
 
             <!-- we will also add show, edit, and delete buttons -->
             <td>

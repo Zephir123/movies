@@ -152,7 +152,7 @@ class MovieController extends Controller
             $movie->save();
 
             // redirect
-            Session::flash('message', 'Successfully created movie!');
+            Session::flash('message', 'Successfully edited movie!');
             return Redirect::to('movies');
         }
     }
