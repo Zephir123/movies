@@ -94,7 +94,12 @@ class MovieController extends Controller
      */
     public function show($id)
     {
-        //
+        // get the movie
+        $movie = \App\Movie::find($id);
+
+        // show the view and pass the movie to it
+        return View::make('movies.show')
+            ->with('movie', $movie);
     }
 
     /**
@@ -105,7 +110,12 @@ class MovieController extends Controller
      */
     public function edit($id)
     {
-        //
+        // get the movie
+        $movie = \App\Movie::find($id);
+
+        // show the edit form and pass the nerd
+        return View::make('movies.edit')
+            ->with('movie', $movie);
     }
 
     /**
@@ -117,7 +127,34 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // validate
+        $rules = array(
+            'title'         => 'required|max:50',
+            'format'        => 'required',
+            'length'        => 'required|numeric|between:0,500',
+            'release_year'  => 'required|numeric|between:1800,2100',
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('movies/' . $id . '/edit')
+                ->withErrors($validator)
+                ->withInput(Input::except('password'));
+        } else {
+            // store
+            $movie = \App\Movie::find($id);
+            $movie->title        = Input::get('title');
+            $movie->format       = Input::get('format');
+            $movie->length       = Input::get('length');
+            $movie->release_year = Input::get('release_year');
+            $movie->rating       = Input::get('rating');
+            $movie->save();
+
+            // redirect
+            Session::flash('message', 'Successfully created movie!');
+            return Redirect::to('movies');
+        }
     }
 
     /**
@@ -128,6 +165,12 @@ class MovieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // delete
+        $movie = \App\Movie::find($id);
+        $movie->delete();
+
+        // redirect
+        Session::flash('message', 'Successfully deleted the movie!');
+        return Redirect::to('movies');
     }
 }

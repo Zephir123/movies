@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-<h1>Add Movie</h1>
+        <h1>Add Movie</h1>
 
         <!-- if there are creation errors, they will show here -->
         {{ Html::ul($errors->all()) }}
