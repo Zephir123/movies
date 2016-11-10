@@ -13,11 +13,11 @@
             <thead>
             <tr>
                 <td>ID</td>
-                <td>Title</td>
-                <td>Format</td>
-                <td>Length</td>
-                <td>Release Year</td>
-                <td>Rating</td>
+                <td>{{ \App\Traits\SortableTrait::link_to_sorting_action('title') }}</td>
+                <td>{{ \App\Traits\SortableTrait::link_to_sorting_action('format') }}</td>
+                <td>{{ \App\Traits\SortableTrait::link_to_sorting_action('length') }}</td>
+                <td>{{ \App\Traits\SortableTrait::link_to_sorting_action('release_year') }}</td>
+                <td>{{ \App\Traits\SortableTrait::link_to_sorting_action('rating') }}</td>
             </tr>
             </thead>
             <tbody>
@@ -59,6 +59,6 @@
             @endforeach
             </tbody>
         </table>
-        <div class="pagination pull-right">{{ $movies->links() }}</div>
+        <div class="pagination pull-right">{{ $movies->appends(Input::except('page'))->links() }}</div>
     </div>
 @endsection

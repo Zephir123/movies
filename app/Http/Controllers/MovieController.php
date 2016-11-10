@@ -30,11 +30,15 @@ class MovieController extends Controller
     public function index()
     {
         // get all the movies
-        $movies = \App\Movie::paginate(2);
+        $movies = \App\Movie::sortable()->paginate(2);
 
         // load the view and pass the movies
         return View::make('movies.index')
             ->with('movies', $movies);
+
+
+        //$users = User::sortable()->get();
+        //return View::make('movies.index', compact('movies'));
     }
 
     /**
