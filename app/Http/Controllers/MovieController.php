@@ -30,7 +30,7 @@ class MovieController extends Controller
     public function index()
     {
         // get all the movies
-        $movies = \App\Movie::all();
+        $movies = \App\Movie::paginate(2);
 
         // load the view and pass the movies
         return View::make('movies.index')
